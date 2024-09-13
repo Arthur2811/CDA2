@@ -8,26 +8,44 @@
         body {
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
         }
         h1 {
-            text-align: center;
-            color: #333;
+            margin: 0;
         }
         ul {
             list-style-type: none;
             padding: 0;
+            display: flex;
+            justify-content: center;
         }
         ul li {
-            padding: 10px;
-            margin: 10px 0;
+            margin: 10px;
             background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        ul li:hover {
+            background-color: #e9ecef;
         }
         ul li a {
+            display: block;
+            padding: 20px;
             text-decoration: none;
             color: #333;
             font-weight: bold;
+            text-align: center;
         }
         ul li a:hover {
             color: #007bff;
@@ -35,14 +53,16 @@
     </style>
 </head>
 <body>
-    <h1>Inventaire Matériel de Musique</h1>
-    <h2>Catégories</h2>
-    <ul>
-        <li><a href="guitares.html">Guitares</a></li>
-        <li><a href="claviers.html">Claviers</a></li>
-        <li><a href="percussions.html">Percussions</a></li>
-        <li><a href="amplificateurs.html">Amplificateurs</a></li>
-        <li><a href="accessoires.html">Accessoires</a></li>
-    </ul>
+    <header>
+        <h1>Inventaire Matériel de Musique</h1>
+    </header>
+    <main>
+        <h2>Catégories</h2>
+        <ul>
+            <li><a href="guitares.html">Guitares</a></li>
+            <li><a href="claviers.html">Claviers</a></li>
+            <!-- Ajoute d'autres catégories ici si nécessaire -->
+        </ul>
+    </main>
 </body>
 </html>

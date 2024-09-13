@@ -1,0 +1,22 @@
+body {
+    background-color: lightblue;
+    }
+    h1 {
+    color: white;
+    text-align: justify;
+    }
+    p {
+    font-family: verdana;
+    font-size: 20px;
+    }
+    table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    }
+    tr:nth-child(even) {
+    background-color: white;
+    }
+    div {
+    background-color: lightblue;
+    }
+    

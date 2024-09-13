@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventaire Guitares</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        .inventory-item {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        .inventory-item img {
+            max-width: 150px;
+            margin-right: 20px;
+        }
+        .inventory-item input[type="number"] {
+            width: 60px;
+        }
+        .submit-button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-link {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load quantities from local storage
+            document.getElementById('quantity1').value = localStorage.getItem('guitar1') || 1;
+            document.getElementById('quantity2').value = localStorage.getItem('guitar2') || 2;
+        });
+
+        function saveQuantities() {
+            var quantity1 = document.getElementById('quantity1').value;
+            var quantity2 = document.getElementById('quantity2').value;
+            localStorage.setItem('guitar1', quantity1);
+            localStorage.setItem('guitar2', quantity2);
+            alert('Quantités sauvegardées !');
+        }
+    </script>
+</head>
+<body>
+    <h1>Inventaire : Guitares</h1>
+    <div class="inventory-item">
+        <img src="Image/Strat.jpg" alt="Guitare 1">
+        <div>
+            <h2>Fender Stratocaster</h2>
+            <p>Guitare électrique</p>
+            <label for="quantity1">Quantité :</label>
+            <input type="number" id="quantity1" name="quantity1">
+        </div>
+    </div>
+    <div class="inventory-item">
+        <img src="Image/Les_Paul.jpg" alt="Guitare 2">
+        <div>
+            <h2>Gibson Les Paul</h2>
+            <p>Guitare électrique</p>
+            <label for="quantity2">Quantité :</label>
+            <input type="number" id="quantity2" name="quantity2">
+        </div>
+    </div>
+    <button class="submit-button" type="button" onclick="saveQuantities()">Sauvegarder</button>
+    <a href="Page_Principale_HTML.html" class="back-link">Retour à la page principale</a>
+</body>
+</html>
