@@ -1,9 +1,0 @@
-from flask import Flask
-from app.odoo import IF_Odoo
-
-app = Flask(__name__)
-ifOdoo = IF_Odoo("192.168.0.17", "8069", "vitre", "inter", "inter")
-ifOdoo.connect()
-ifOdoo.getFields('mrp.production')
-from app import routes
-
