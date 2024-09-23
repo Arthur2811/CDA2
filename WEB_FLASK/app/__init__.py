@@ -1,6 +1,5 @@
-from flask import Flask
+from app import app
 
 app = Flask(__name__)
 
-# Import des routes pour enregistrer les endpoints
-from app import routes
+from app import routes 
