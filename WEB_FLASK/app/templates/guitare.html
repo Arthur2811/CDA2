@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventaire Guitares</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style_guitare.css')}}">
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load quantities from local storage
+            document.getElementById('quantity1').value = localStorage.getItem('guitar1') || 1;
+            document.getElementById('quantity2').value = localStorage.getItem('guitar2') || 2;
+        });
+
+        function saveQuantities() {
+            var quantity1 = document.getElementById('quantity1').value;
+            var quantity2 = document.getElementById('quantity2').value;
+            localStorage.setItem('guitar1', quantity1);
+            localStorage.setItem('guitar2', quantity2);
+            alert('Quantités sauvegardées !');
+        }
+    </script>
+</head>
+<body>
+    <h1>Inventaire : Guitares</h1>
+    <div class="inventory-item">
+        <img src="static/Image/Strat.jpg" alt="Guitare 1">
+        <div>
+            <h2>Fender Stratocaster</h2>
+            <p>Guitare électrique</p>
+            <label for="quantity1">Quantité :</label>
+            <input type="number" id="quantity1" name="quantity1">
+        </div>
+    </div>
+    <div class="inventory-item">
+        <img src="static/Image/Les_Paul.jpg" alt="Guitare 2">
+        <div>
+            <h2>Gibson Les Paul</h2>
+            <p>Guitare électrique</p>
+            <label for="quantity2">Quantité :</label>
+            <input type="number" id="quantity2" name="quantity2">
+        </div>
+    </div>
+    <button class="submit-button" type="button" onclick="saveQuantities()">Sauvegarder</button>
+    <a href="{{ url_for('home') }}" class="back-link">Retour à la page principale</a>
+</body>
+</html>

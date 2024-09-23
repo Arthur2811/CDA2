@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventaire Matériel de Musique</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style_home.css')}}">
+</head>
+<body>
+    <header>
+        <h1>Inventaire Matériel de Musique</h1>
+    </header>
+    <main>
+        <h2>Catégories</h2>
+            </ul>
+            <li><a href="{{ url_for('guitare') }}">Guitares</a></li>
+            <li><a href="{{ url_for('clavier') }}">Claviers</a></li>
+            <!-- Ajoute d'autres catégories ici si nécessaire -->
+        </ul>
+    </main>
+</body>
+</html>
