@@ -75,6 +75,33 @@ class IF_BDD:
         except Error as e:
             print(f"Erreur lors de la mise à jour de la colonne : {e}")
 
+    def add_column(self, column_name):
+        if self.mydb is None:
+            print("Pas de connexion à la base de données.")
+            return
+
+        try:
+            self.mycursor = self.mydb.cursor()
+
+            'Utiliser la base de données "guitare"'
+            self.mycursor.execute("USE guitare")
+
+            'Vérifier si la colonne existe déjà'
+            self.mycursor.execute("SHOW COLUMNS FROM nombre")
+            existing_columns = [column[0] for column in self.mycursor.fetchall()]
+
+            if column_name in existing_columns:
+                print(f"La colonne '{column_name}' existe déjà.")
+                return
+
+            'Ajouter la colonne'
+            alter_query = f"ALTER TABLE nombre ADD COLUMN {column_name} INT"
+            self.mycursor.execute(alter_query)
+            self.mydb.commit()
+            print(f"Colonne '{column_name}' ajoutée avec succès.")
+        except Error as e:
+            print(f"Erreur lors de l'ajout de la colonne : {e}")
+
     def disconnect_bdd(self):
         if self.mycursor is not None:
             self.mycursor.close()
@@ -90,12 +117,18 @@ class IF_BDD:
 if __name__ == "__main__":
     pwd = getpass.getpass("Entrez le mot de passe de la BDD MySQL: ")
     ifBdd = IF_BDD()
-    if ifBdd.connect_bdd(pwd):
+    if ifBdd.connect_bdd(pwd): 
         ifBdd.display_bdd()
 
         'Mettre à jour la valeur d’une colonne'
         col = input("Entrez la colonne à mettre à jour (quantity1, quantity2, quantity3) : ")
         val = input(f"Entrez la nouvelle valeur pour {col} : ")
         ifBdd.update_column_value(col, val)
+
+        #Demander à l'utilisateur s'il veut ajouter une colonne
+        add_column = input("Voulez-vous ajouter une nouvelle colonne ? (oui/non) : ").strip().lower()
+        if add_column == 'oui':
+            new_col = input("Entrez le nom de la colonne à ajouter : ")
+            ifBdd.add_column(new_col)
 
         ifBdd.disconnect_bdd()
